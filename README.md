@@ -7,7 +7,11 @@ The PyInputAssembler repository provides the source code for the application, al
 Whether you're a developer looking to automate your workflows or a power user looking to simplify repetitive tasks, PyInputAssembler provides a powerful tool for generating and combining input parameters for other applications.
 
 ## Usage
-not implemented 
+### Video
+
+https://github.com/J-Saeedi/PyInputAssembler/assets/103021017/c0fd9dae-060a-4ed3-899f-e6bb855866dc
+
+
 
 ## ToDo
 - [ ] generate todo-list
