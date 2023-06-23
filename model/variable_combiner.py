@@ -31,6 +31,9 @@ class Combiner:
             worksheet = workbook.active
             for var in var_list:
                 data_in_range = []
+                if (var[1] == "-") or (var[2] == "-"):
+                    results[var[0]] = data_in_range
+                    continue
                 min_row, min_col = Combiner.get_col_row_number(var[1])
                 max_row, max_col = Combiner.get_col_row_number(var[2])
 
@@ -47,4 +50,5 @@ class Combiner:
 
     def combine(variables_values):
         values = list(variables_values.values())
-        return list(product(*values))
+        good_values = list(filter(lambda x: x != [], values))
+        return list(product(*good_values))

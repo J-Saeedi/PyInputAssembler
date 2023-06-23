@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:/Users/w-admin/AppData/Local/Temp/ui_windowNuEetI.ui'
+# Form implementation generated from reading ui file 'C:/Users/w-admin/AppData/Local/Temp/ui_windowMSiGam.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -213,8 +213,48 @@ class Ui_MainWindow(object):
         self.gridLayout_2 = QtWidgets.QGridLayout(self.page_4)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.groupBox_4 = QtWidgets.QGroupBox(self.page_4)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.groupBox_4.sizePolicy().hasHeightForWidth())
+        self.groupBox_4.setSizePolicy(sizePolicy)
+        self.groupBox_4.setTitle("")
         self.groupBox_4.setObjectName("groupBox_4")
+        self.formLayout = QtWidgets.QFormLayout(self.groupBox_4)
+        self.formLayout.setObjectName("formLayout")
+        self.label_3 = QtWidgets.QLabel(self.groupBox_4)
+        self.label_3.setObjectName("label_3")
+        self.formLayout.setWidget(
+            0, QtWidgets.QFormLayout.LabelRole, self.label_3)
+        self.comboBox_cores = QtWidgets.QComboBox(self.groupBox_4)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.comboBox_cores.sizePolicy().hasHeightForWidth())
+        self.comboBox_cores.setSizePolicy(sizePolicy)
+        self.comboBox_cores.setObjectName("comboBox_cores")
+        self.comboBox_cores.addItem("")
+        self.formLayout.setWidget(
+            0, QtWidgets.QFormLayout.FieldRole, self.comboBox_cores)
         self.gridLayout_2.addWidget(self.groupBox_4, 0, 0, 1, 1)
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.pushButton_generateLauncher = QtWidgets.QPushButton(self.page_4)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.pushButton_generateLauncher.sizePolicy().hasHeightForWidth())
+        self.pushButton_generateLauncher.setSizePolicy(sizePolicy)
+        self.pushButton_generateLauncher.setObjectName(
+            "pushButton_generateLauncher")
+        self.horizontalLayout_5.addWidget(self.pushButton_generateLauncher)
+        self.gridLayout_2.addLayout(self.horizontalLayout_5, 1, 0, 1, 1)
         self.toolBox.addItem(self.page_4, "")
         self.verticalLayout.addWidget(self.toolBox)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -247,7 +287,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.toolBox.setCurrentIndex(2)
+        self.toolBox.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -282,7 +322,10 @@ class Ui_MainWindow(object):
         self.groupBox_8.setTitle(_translate("MainWindow", "Preview"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_3), _translate(
             "MainWindow", "Step 3: Generate All Possible Inputs Combinations"))
-        self.groupBox_4.setTitle(_translate("MainWindow", "GroupBox"))
+        self.label_3.setText(_translate("MainWindow", "Number of Cores"))
+        self.comboBox_cores.setItemText(0, _translate("MainWindow", "1"))
+        self.pushButton_generateLauncher.setText(
+            _translate("MainWindow", "Generate Launcher"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_4), _translate(
             "MainWindow", "Step 4: Generate Launcher"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))

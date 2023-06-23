@@ -15,6 +15,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.app = application
         self.connect_signals()
+        self.set_number_of_cores()
 
     def connect_signals(self):
         self.actionSaveSettings.triggered.connect(self.save)
@@ -23,8 +24,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_openExcel.clicked.connect(self.open_excel_dialog)
         self.pushButton_updateScan.clicked.connect(self.app.scan_variables)
         self.pushButton_generate.clicked.connect(self.app.generate_inputs)
+        self.pushButton_generate.clicked.connect(self.save_excel_dialog)
         self.pushButton_export.clicked.connect(self.save_excel_dialog)
-        # self.pushButton_updateScan.clicked.connect(clear_table)
+        self.pushButton_generateLauncher.clicked.connect(
+            self.save_folder_dialog)
 
     def restore(self):
         finfo = QFileInfo(self.settings.fileName())
@@ -66,7 +69,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if fileName:
             self.lineEdit_excelAddress.setText(fileName)
             self.app.excelAddress = fileName
-            print(fileName)  # DELME
 
     def save_excel_dialog(self):
         options = QFileDialog.Options()
@@ -74,8 +76,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         fileName, _ = QFileDialog.getSaveFileName(
             self, "Save Your Excel Reference Inputs", "CaseStudy", "Microsoft Excel Files (*.xlsx)", options=options)
         if fileName:
+            self.app.excel_inputs_address = fileName
             self.app.export_generated_inputs(fileName)
-            print(fileName)  # DELME
+
+    def save_folder_dialog(self):
+        options = QFileDialog.Options()
+        # options |= QFileDialog.DontUseNativeDialog
+        fileName = QFileDialog.getExistingDirectory(
+            self, "Select a Folder to Save Cases", options=options)
+        if fileName:
+            self.app.output_folder = fileName
+            self.app.generate_launcher_procedure()
 
     def clear_table(self):
         self.tableWidget.setRowCount(0)
@@ -107,3 +118,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tableWidget.setCellWidget(rowCount, 2, container2)
 
         self.tableWidget.resizeRowsToContents()
+
+    def set_number_of_cores(self):
+        number = self.app.get_number_of_cores()
+        for i in range(2, number+1):
+            self.comboBox_cores.addItem(str(i))
