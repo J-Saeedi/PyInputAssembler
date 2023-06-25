@@ -26,15 +26,17 @@ class Utility:
         table_obj = Application.view.tableWidget
         avail_vars = Combiner.find_avaliable_variables(table_obj)
 
-        excel_fileName = Application.excelAddress
-        avail_values = Combiner.load_variables_values(
-            avail_vars, excel_fileName)
-        result = Combiner.combine(avail_values)
-        preview = "\n".join(list(map(lambda x: f"input{x}", result)))
-        Application.view.plainTextEdit.setPlainText(preview)
-        Application.generated_inputs = result
-        Application.generated_inputs_labels = list(avail_values.keys())
-        Application.view.pushButton_export.setEnabled(True)
+        # excel_fileName = Application.excelAddress
+        # avail_values = Combiner.load_variables_values(
+        #     avail_vars, excel_fileName)
+        # result = Combiner.combine(avail_values)
+        # preview = "\n".join(list(map(lambda x: f"input{x}", result)))
+        # Application.view.plainTextEdit.setPlainText(preview)
+        Application.generated_inputs = []  # result
+        # list(avail_values.keys())
+        Application.generated_inputs_labels = avail_vars
+        print(f"{avail_vars}")
+        # Application.view.pushButton_export.setEnabled(True)
 
     def export_generated_inputs(fileName):
         if not (Application.generate_inputs):
@@ -43,7 +45,7 @@ class Utility:
         worksheet = workbook.active
         worksheet.cell(row=1, column=1, value="CaseStudyName")
         for i, label in enumerate(Application.generated_inputs_labels, start=2):
-            worksheet.cell(row=1, column=i, value=label)
+            worksheet.cell(row=1, column=i, value=label[0])
 
         for i, value_list in enumerate(Application.generated_inputs, start=2):
             worksheet.cell(row=i, column=1, value="Case"+str(i-1).zfill(8))
