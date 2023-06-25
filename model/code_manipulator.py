@@ -1,4 +1,5 @@
 import re
+import os
 
 
 class CodeManipulator:
@@ -34,6 +35,7 @@ class CodeManipulator:
             print([new_value])
             new_code = re.sub(key, new_value, new_code)
 
+        os.makedirs(os.path.dirname(name), exist_ok=True)
         with open(f"{name}.py", "w") as f:
             f.write(new_code)
 
@@ -53,7 +55,7 @@ def run_file(filename):
 
 if __name__ == '__main__':
     # Define a list of Python files to run
-    files = list(glob("Case*.py"))
+    files = list(glob("*/Case*.py"))
 
     # Specify the maximum number of worker processes to use
     max_processes = 2
